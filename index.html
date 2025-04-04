@@ -3,10 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>PLANEA</title>
 </head>
 <body>
+    <div class="menu">
+        <button class="menu-btn">Menú</button>
+        <div class="menu-content">
+            <a href="#">Opción 1</a>
+            <a href="#">Opción 2</a>
+            <a href="#">Opción 3</a>
+        </div>
+    </div>
+    
     <h1>PLANEA</h1>
     <h2>SIEMPRE HAY ALGO QUE HACER</h2>
+
+    <h3>Buscador de Palabras Clave</h3>
+        <input type="text" id="searchBox" placeholder="Escribe una palabra clave...">
+        <div class="result-container" id="results"></div>
+    <script>
+        const data = [
+            "Fiesta de la Cerveza",
+            "Fiesta del Inmigrante",
+            "Recital de Los Piojos",
+            "San Patricio",
+            "Cumpleños de La Plata",
+            "Dia del Estudiante"
+        ];
+
+        document.getElementById("searchBox").addEventListener("input", function () {
+            let query = this.value.toLowerCase();
+            let results = data.filter(item => item.toLowerCase().includes(query));
+            document.getElementById("results").innerHTML = results.length
+                ? results.map(item => `<div class="result">${item}</div>`).join("")
+                : "<p>No hay resultados</p>";
+        });
+    </script>
 </body>
+<footer style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: #6200ea; color: white;">
+    <a href="https://www.google.com/maps" target="_blank" style="text-decoration: none; color: white; display: flex; align-items: center;">
+        <img src="localizacion-icono.png" alt="Ubicación" width="30" style="margin-right: 10px;">
+        <span>Mapa</span>
+    </a>
+    
+    <a href="agenda.html" style="text-decoration: none; color: white; display: flex; align-items: center;">
+        <img src="senalador-icono.png" alt="Agenda" width="30" style="margin-right: 10px;">
+        <span>Agenda</span>
+    </a>
+</footer>
 </html>
